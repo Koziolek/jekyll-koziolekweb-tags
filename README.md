@@ -61,6 +61,22 @@ Your code goes here
 
 and finally it will be processed by markdown engine to final form. `X` is an number of listing, starts from 1 and work in post context.
 
+### yt_video
+
+This tag helps to embed youtube video:
+
+```
+{% yt_video VIDEO_ID %}
+```
+
+will generate
+
+```html
+<div class="video">
+    <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to

@@ -49,8 +49,24 @@ module Koziolekweb
         "<aside class=\"offtopic f-#{@direction}\">#{content}</aside>"
       end
     end
+
+    class YtVideo < Liquid::Tag
+      def initialize(tag_name, video_id, tokens)
+        super
+        @video_id = video_id.strip
+      end
+
+      def render(_context)
+        <<~HTML
+        <div class="video">
+          <iframe src="https://www.youtube-nocookie.com/embed/#{@video_id}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      HTML
+      end
+    end
   end
 end
 
 Liquid::Template.register_tag('listing', Koziolekweb::Tags::Listing)
 Liquid::Template.register_tag('offtop', Koziolekweb::Tags::Offtop)
+Liquid::Template.register_tag('yt_video', Koziolekweb::Tags::YtVideo)

@@ -11,6 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary = "Set of structural tags that helps to organise article."
   spec.description = "Here you will find a set of tags that allow you to create code listings with numbering, notes using the <aside> element and more."
   spec.homepage = "https://github.com/Koziolek/jekyll-koziolekweb-tags"
+  spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.4.0"
   spec.add_dependency "jekyll", ">= 3.7", "< 5.0"
 
@@ -23,7 +24,6 @@ Gem::Specification.new do |spec|
   end
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
-
 
   spec.metadata["source_code_uri"] = "https://github.com/Koziolek/jekyll-koziolekweb-tags"
   spec.metadata["changelog_uri"] = "https://github.com/Koziolek/jekyll-koziolekweb-tags/CHANGELOG.md"
