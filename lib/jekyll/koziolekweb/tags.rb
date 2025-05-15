@@ -32,8 +32,9 @@ module Koziolekweb
         @@file_state[current_file] += 1
         content = super
         content_with_code_fence = "```#{@lang} #{content}```"
+        title_with_parese = "#{@title}"
 
-        "<p class='listing'> Listing #{@@file_state[current_file]}. #{@title}</p>#{content_with_code_fence}"
+        "<p class='listing'> Listing #{@@file_state[current_file]}. #{@title_with_parese}</p>#{content_with_code_fence}"
       end
     end
 

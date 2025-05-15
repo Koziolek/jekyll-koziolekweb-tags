@@ -54,9 +54,9 @@ in md file, then it will generate:
 
 ```html
 <p class="listing">Listing X. TITLE</p>
-\`\`\`LANG
+\```LANG
 Your code goes here
-\`\`\`
+\```
 ```
 
 and finally it will be processed by markdown engine to final form. `X` is an number of listing, starts from 1 and work in post context.
