@@ -9,4 +9,5 @@ gem "rake", "~> 13.0"
 gem "minitest"
 gem "liquid", "~> 4.0"
 gem "shellwords"
+gem "rubygems-tasks"
 gem "jekyll", ENV["JEKYLL_VERSION"] if ENV["JEKYLL_VERSION"]
