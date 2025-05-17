@@ -30,7 +30,10 @@ module Koziolekweb
       end
 
       def render(context)
-        current_file = context.registers.dig(:page, "path") || "__global__"
+        page = context.registers[:page]
+        current_file = page["path"] if page.respond_to?(:[]) && page["path"]
+        current_file ||= page.path if page.respond_to?(:path)
+        current_file ||= "__global__"
         context.registers[:listing_count] ||= {}
         context.registers[:listing_count][current_file] ||= 0
         listing_number = (context.registers[:listing_count][current_file] += 1)
