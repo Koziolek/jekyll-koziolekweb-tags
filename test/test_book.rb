@@ -81,15 +81,15 @@ class TestBook < Minitest::Test
   end
 
   def test_valid_markup
-    markup = "\"Tytuł\" \"Autor\" 2023 \"123-456-789\" \"/path/to/cover.jpg\" lang:pl"
+    markup = "\"Tytuł Książki\" \"Autor Nazwisko\" 2023 \"123-456-789\" \"/path/to/cover.jpg\" lang:pl"
     output = render_tag(markup)
 
-    assert_includes output, "Tytuł"
-    assert_includes output, "Autor"
+    assert_includes output, "Tytuł Książki"
+    assert_includes output, "Autor Nazwisko"
     assert_includes output, "2023"
     assert_includes output, "123-456-789"
     assert_includes output, "/path/to/cover.jpg"
-    assert_includes output, "Okładka książki Tytuł autorstwa Autor"
+    assert_includes output, "Okładka książki Tytuł Książki autorstwa Autor Nazwisko"
   end
 
   def test_missing_arguments

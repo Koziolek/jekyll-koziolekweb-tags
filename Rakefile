@@ -11,7 +11,7 @@ Rake::TestTask.new do |t|
 end
 
 desc "Stwórz gem, wygeneruj changelog, utwórz tag i wypchnij"
-task :release do
+task :myrelease do
   # Sprawdzenie obecności pliku .gemspec
   gemspec_filename = Dir.glob("*.gemspec").first
   abort("Brak pliku .gemspec!") unless gemspec_filename
@@ -22,22 +22,22 @@ task :release do
   gem_version = gemspec.version.to_s
 
   # 1. Wygeneruj gem
-  # Rake::Task[:build_gem].invoke
+  Rake::Task[:build_gem].invoke
 
   # 2. Wygeneruj changelog
   Rake::Task[:generate_changelog].invoke
 
   # 3. Utwórz tag gita
-  # Rake::Task[:create_git_tag].invoke
+  Rake::Task[:create_git_tag].invoke
 
   # 4. Wypchnij tag na zdalny repozytorium
-  # Rake::Task[:push_git_tag].invoke
+  Rake::Task[:push_git_tag].invoke
 
   # 5. Wypchnij gem na RubyGems
-  # Rake::Task[:push_gem].invoke
+  Rake::Task[:push_gem].invoke
 
   # 6. Zwiększ wersję w pliku VERSION
-  # Rake::Task[:bump_version].invoke
+  Rake::Task[:bump_version].invoke
 
   puts "Wersja #{gem_name} #{gem_version} została zbudowana i wydana!"
 end

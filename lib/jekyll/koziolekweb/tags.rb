@@ -45,9 +45,9 @@ module Koziolekweb
         code_html = markdown_converter.convert(markdown_code).strip
 
         <<~HTML
-            <p class='listing'> Listing #{listing_number}. #{title_html}</p>
-            #{code_html}
-          HTML
+          <p class='listing'> Listing #{listing_number}. #{title_html}</p>
+          #{code_html}
+        HTML
       end
     end
 
@@ -109,14 +109,34 @@ module Koziolekweb
 
     end
 
+    # A tag that displays book information with cover image in a structured format.
+    # 
+    # Usage:
+    #   {% book "Title" "Author" "2024" "1234567890" "https://example.com/cover.jpg" %}
+    #
+    # Optional language parameter:
+    #   {% book "Title" "Author" "2024" "1234567890" "https://example.com/cover.jpg" lang:pl %}
+    #
+    # The tag requires:
+    # - Title (in quotes)
+    # - Author (in quotes) 
+    # - Publication year (4 digits)
+    # - ISBN (can be empty string)
+    # - Cover image URL
+    #
+    # Language support:
+    # - Default language is 'en'
+    # - Language files should be in _data/lang/[lang_code].yml
+    # - Language codes must be 2 letters (e.g. en, pl, de)
     class Book < Liquid::Tag
+      # Minimum number of required arguments (title, author, year, isbn, cover_url)
       MIN_ARGS = 5
 
       def initialize(tag_name, markup, tokens)
         super
 
         args = Shellwords.split(markup)
-        raise Liquid::SyntaxError, "Invalid usage" if args.size < self::MIN_ARGS
+        raise Liquid::SyntaxError, "Invalid usage" if args.size < MIN_ARGS
 
         @title, @author, @year, @isbn, @cover_url = args[0..4].map { _1.delete('"') }
 
